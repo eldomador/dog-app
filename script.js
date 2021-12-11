@@ -13,8 +13,6 @@ async function getDogs(url, search = "") {
   const resp = await fetch(url);
   const respData = await resp.json();
 
-  console.log(respData);
-
   showDogs(respData, search);
 
   return respData;
@@ -30,7 +28,16 @@ function showDogs(dogs, search) {
       return element.name.toLowerCase().includes(search.toLowerCase());
     })
     .forEach((dog) => {
-      const { name, temperament, bred_for, life_span, origin,weight,height, image } = dog;
+      const {
+        name,
+        temperament,
+        bred_for,
+        life_span,
+        origin,
+        weight,
+        height,
+        image,
+      } = dog;
       const dogEl = document.createElement("div");
       dogEl.classList.add("dog");
 
@@ -43,7 +50,7 @@ function showDogs(dogs, search) {
       if (bred_for) {
         bredForValue = `<p><b>bred For : </b>${bred_for}</p>`;
       } else {
-        bredForValue  = "";
+        bredForValue = "";
       }
 
       dogEl.innerHTML = `
